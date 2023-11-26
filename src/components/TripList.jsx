@@ -1,33 +1,17 @@
 import { useState } from "react";
-import { useFetch } from "./hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 import "./TripList.css";
 import Loader from "./Loader";
 import { motion } from "framer-motion"
+import { useGlobalContext } from "../hooks/useGlobalContext";
+
 
 
 function TripList() {
   const [url, setUrl] = useState("http://localhost:3000/trips");
   const { data: trips, isPending, error } = useFetch(url);
-
-const container = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delayChildren: 0.3,
-      staggerChildren: 0.2
-    }
-  }
-}
-
-const item = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1
-  }
-}
+  const data = useGlobalContext()
+  console.log(data);
 
   return (
     <div>
