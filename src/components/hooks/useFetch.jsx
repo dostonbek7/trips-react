@@ -1,30 +1,47 @@
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useEffect, useReducer } from "react";
+
+const changeState = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case "data":
+      return { ...state, data: payload }
+    case "error":
+      return { ...state, error: payload }
+    case "isPending":
+      return { ...state, isPending: payload }
+    default:
+      return state;
+  }
+};
 
 export function useFetch(url) {
-  const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState(null);
+  const [state, dispatch] = useReducer(changeState, {
+    data: null,
+    error: null,
+    isPending: false,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
-      setIsPending(true);
+      dispatch({ type: "isPending", payload: true });
       try {
-        const req = await fetch(url);
-        if (!req.ok) {
-          throw new Error(req.statusText);
+        const req = await axios(url);
+
+        if (req.status !== 200) {
+          throw new Error(req.message);
         }
-        const data = await req.json();
-        setData(data);
-        setIsPending(false);
-      } catch (err) {
-        console.log(err.message);
-        setError(err.message);
-        setIsPending(false);
+        dispatch({ type: "data", payload: req.data });
+        dispatch({ type: "isPending", payload: false });
+        dispatch({ typr: "error", payload: null });
+      } catch (error) {
+        dispatch({ typr: "error", payload: error });
+        dispatch({ typr: "isPending", payload: false });
       }
     };
 
     fetchData();
   }, [url]);
 
-  return { data, isPending, error };
+  return { ...state };
 }
