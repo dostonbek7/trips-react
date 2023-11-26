@@ -10,11 +10,14 @@ import { useGlobalContext } from "../hooks/useGlobalContext";
 function TripList() {
   const [url, setUrl] = useState("http://localhost:3000/trips");
   const { data: trips, isPending, error } = useFetch(url);
-  const data = useGlobalContext()
-  console.log(data);
+  const {count, dispatch} = useGlobalContext()
+
 
   return (
     <div>
+    <h2>{count}</h2>
+    <button onClick={()=>dispatch({type:"ADD"})}>ADD</button>
+    <button onClick={()=>dispatch({type:"REMOVE"})}>REMOVE</button>
       <h1>TripList</h1>
       {isPending && <Loader/>}
       {error && (<div><h3>{error}</h3></div>)}
