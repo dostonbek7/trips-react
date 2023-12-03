@@ -5,8 +5,9 @@ function About() {
     <div className="pages">
       <h2>About</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eaque eum
-        ad quia animi! Voluptas nemo beatae a quam accusantium!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
+        reprehenderit rem velit, sed odit modi quam architecto veritatis dolorem
+        dolorum.
       </p>
     </div>
   );
