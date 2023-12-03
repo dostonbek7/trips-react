@@ -9,12 +9,12 @@ function Signup() {
   const form = useRef();
 
   const handleSubmit = (e) => {
-    e.prevanetDafeault();
+    e.preventDefault();
     signup(
       displayName.current.value,
       email.current.value,
       password.current.value
-    );
+    )
     form.current.reset();
   };
   return (

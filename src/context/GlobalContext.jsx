@@ -2,25 +2,29 @@ import { createContext, useReducer } from "react";
 
 export const GlobalContext = createContext();
 
-const reduser = (state, action)=>{
-  const {type, payload} = action
+const reduser = (state, action) => {
+  const { type, payload } = action;
 
-  switch (type){
-  case 'ADD':
-    return state +=1
-    case 'REMOVE':
-    return state -=1
+  switch (type) {
+    case "LOGIN":
+      return { ...state, user: payload };
+    case "LOGOUT":
+      return { ...state, user: null };
+    case "IS_AUTH_CHANGE":
+      return { ...state, isAuthChange: true };
     default:
-      return state
+      return state;
   }
-}
+};
 
 export function GlobalContextProvider({ children }) {
-
-  const [count, dispatch ]= useReducer(reduser, 0)
+  const [state, dispatch] = useReducer(reduser, {
+    user: null,
+    isAuthChange: false,
+  });
 
   return (
-    <GlobalContext.Provider value={{count,dispatch}}>
+    <GlobalContext.Provider value={{ ...state, dispatch }}>
       {children}
     </GlobalContext.Provider>
   );

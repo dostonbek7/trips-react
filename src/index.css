@@ -1,13 +1,57 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  outline: none;
+}
+.container{
+  max-width: 1140px;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
 .header{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 30px;
 }
 .header nav{
   display: flex;
   gap: 20px;
+}
+.header nav{
+  display: flex;
+  align-items: center;
+}
+nav a{
+  color: #222;
+}
+nav a:hover{
+  color: rgb(237, 101, 10);
+}
+.displayname{
+  cursor: pointer;
+  background-color: rgb(212, 205, 199);
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+.displayname:hover{
+  color: rgb(237, 101, 10);
+}
+.logout{
+  padding: 8px 16px;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+}
+.logout:hover{
+  background: #000;
+  color: #fff;
 }
 main{
   display: flex;
@@ -15,10 +59,22 @@ main{
   justify-content: center;
   align-items: center;
 }
+
+.pages h2{
+  margin-bottom: 20px;
+  text-align: center;
+}
 .middle{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 50px;
+}
+.forms h2{
+  margin-bottom: 20px;
+}
+.forms p{
+  margin-top: 20px;
 }
 .forms label {
   display: block;
@@ -50,4 +106,12 @@ main{
   border-radius: 2px;
   font-family: inherit;
   cursor: pointer;
+}
+
+
+@media screen and (max-width:630px) {
+  .header{
+    flex-direction: column;
+    gap: 15px;
+  }
 }
