@@ -1,116 +1,15 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  outline: none;
-}
-.container{
-  max-width: 1140px;
-  width: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-right: auto;
-  margin-left: auto;
-}
-.header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 30px;
-}
-.header nav{
-  display: flex;
-  gap: 20px;
-}
-.header nav{
-  display: flex;
-  align-items: center;
-}
-nav a{
-  color: #222;
-}
-nav a:hover{
-  color: rgb(237, 101, 10);
-}
-.displayname{
-  cursor: pointer;
-  background-color: rgb(212, 205, 199);
-  padding: 5px 10px;
-  border-radius: 8px;
-}
-.displayname:hover{
-  color: rgb(237, 101, 10);
-}
-.logout{
-  padding: 8px 16px;
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 8px;
-  border: none;
-}
-.logout:hover{
-  background: #000;
-  color: #fff;
-}
-main{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.pages h2{
-  margin-bottom: 20px;
-  text-align: center;
-}
-.middle{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 50px;
-}
-.forms h2{
-  margin-bottom: 20px;
-}
-.forms p{
-  margin-top: 20px;
-}
-.forms label {
-  display: block;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.forms label span {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.forms form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.forms form input {
-  padding: 5px 10px;
-  font-family: inherit;
-  font-size: 18px;
-}
-
-.forms form button {
-  align-self: flex-start;
-  background-color: blueviolet;
-  color:aliceblue;
-  border: 0;
-  padding: 8px 12px;
-  border-radius: 2px;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-
-@media screen and (max-width:630px) {
-  .header{
-    flex-direction: column;
-    gap: 15px;
+@layer{
+  .container{
+    @apply max-w-6xl w-full px-5 mx-auto
+  }
+  html, body, #root{
+    @apply h-full
+  }
+  body{
+    @apply m-0 p-0 outline-none no-underline
   }
 }
